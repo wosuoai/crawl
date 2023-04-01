@@ -172,7 +172,6 @@ df.to_excel('./{}.xlsx'.format(goodName))
 #     pinjia = items[itemIndex].find_element(By.XPATH, './div/span').text
 #     if "璇勪环" in pinjia:
 #         pinjia=pinjia.replace("璇勪环","评价").replace("鏀惰棌","收藏")
-#         # 正则分离
 #         # pattern = r'评价:(\d+),收藏:(\d+)'
 #         # matches = re.findall(pattern,a)
 #         # evaluate = matches[0][0]
