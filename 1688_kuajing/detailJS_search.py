@@ -48,18 +48,22 @@ for page in range(1,6):
     driver.get("https://s.1688.com/selloffer/offer_search.htm?keywords={}&spm=a260k.dacugeneral.search.0&beginPage={}#sm-filtbar".format(parse.quote(goodName.encode('gbk')),page))
     time.sleep(5)
 
+    # 向下滚动
     count=800
     for i in range(6):
         driver.execute_script("document.documentElement.scrollTop={}".format(count))
         time.sleep(random.randint(3,4))
         count+=800
 
+    # 读取该js文件
     with open('file.js') as f:
         js = f.read()
         js_string = '{}'.format(js)
 
+    # 执行js文件
     driver.execute_script(js_string)
     time.sleep(random.randint(3,4))
+    # 找到执行js后生成的按钮
     driver.find_element(By.ID,'ywg-alibaba-list-btn').click()
     num=0
 
@@ -120,6 +124,11 @@ for page in range(1,6):
 
     time.sleep(random.randint(5, 8))
 
+    '''
+    执行js获取该页的全部信息后
+    需要先刷新一次
+    否则js后的信息会停留在下一页
+    '''
     driver.refresh()
     time.sleep(random.randint(3, 5))
 
