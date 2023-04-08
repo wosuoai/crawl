@@ -7,7 +7,9 @@ import logging
 import random
 import phonenumbers
 import pandas as pd
+from PIL import Image
 from selenium.webdriver.support import expected_conditions as EC
+from chaojiying import Chaojiying_Client
 # import io
 # import sys
 # sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf-8') #改变标准输出的默认编码
@@ -24,6 +26,7 @@ option = webdriver.ChromeOptions()
 # 关闭开发者模式防止被检测
 option.add_experimental_option("excludeSwitches", ['enable-automation', 'enable-logging'])
 option.add_argument('--disable-blink-features=AutomationControlled')
+option.add_experimental_option("detach",True)
 driver=webdriver.Chrome(executable_path=r"C:\Users\admin\AppData\Local\Programs\Python\Python38\chromedriver.exe",chrome_options=option)
 driver.maximize_window()
 
@@ -36,8 +39,6 @@ def xpathExists(xpath):
       return False
 
 phone_data=[]
-data={"WhatsApp":phone_data}
-
 
 #country_list = [60,63,66,81,84,852,855,880,91,93,95,961,963,965,968,973,975,977,62,65,673,82,850,853,856,886,90,92,94,960,962,964,966,972,974,976,98,7,31,33,350,352,354,356,358,336,338,223,40,4175,44,46,48,30,32,34,351,353,355,357,349,39,396,41,43,45,47,20,213,218,221,223,225,227,229,231,233,235,237,239,240,242,244,247,249,251,253,255,257,260,262,264,266,268,27,297,210,216,220,222,224,226,228,230,232,234,236,238,239,241,243,245,248,250,252,254,256,258,261,263,265,267,269,290,298,1,1808,1809,1907,299,500,502,504,506,509,52,54,56,58,592,594,596,598,501,503,505,507,51,53,55,57,591,593,595,597,61,671,6723,674,677,679,683,685,688,64,6722,6724,676,678,682,684,686]
 site = {0:"facebook.com",1:"instagram.com",2:"twitter.com",3:"pinterest.com",4:"Linkedin.com"}
@@ -51,6 +52,7 @@ start=time.time()
 country_list = [60,63,66]
 for k in country_list:
     driver.get('https://www.google.com/search?q= "%2B{}" {} whatsapp AND site:{}/&num=100&hl=en'.format(k,key_word,site.get(site_num)))
+
 
     '''等待元素加载，且如果出现recaptcha人机验证，在等待时间内处理掉'''
     WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.ID, "before-appbar")))
@@ -76,24 +78,24 @@ for k in country_list:
                     match = phonenumbers.PhoneNumberMatcher(get_info, "")
                     m = list(match)
                     for phone in m:
-                        phone_data.append(phone.raw_string)
-                        # 这里虽然做了异常处理，但print还是会引发Logging error，但对结果来说没有影响
-                        print(phone.raw_string)
+                        phone_data.append(phone.raw_string.replace('(','').replace(')',''))
+                        # 这里虽然做了异常处理，但print还是会引发Logging error，但对结果来说没有影响，估计是get_info没有电话号码
+                        print(phone.raw_string.replace('(','').replace(')',''))
                     n+=1
                 except Exception as error:
                     logging.error("错误是%s" % error)
 
 
                 # 判断是否可以翻页
-                page_num=[]
                 if xpathExists('//*[@id="botstuff"]/div/div[2]/table/tbody/tr/td'):
-                    page_num.append(driver.find_element(By.XPATH,'//*[@id="botstuff"]/div/div[2]/table/tbody/tr/td'))
-                    for page in range(len(page_num)-3):
+                    page_num=driver.find_element(By.XPATH,'//*[@id="botstuff"]/div/div[2]/table/tbody/tr/td[last()-1]').text
+                    for page in range(int(page_num)-1):
                         if xpathExists('//*[@id="pnnext"]/span[2]'):
                             driver.find_element(By.XPATH,'//*[@id="pnnext"]/span[2]').click()
                         else:
-                            print("xpath不存在，该区域商品就一页")
+                            print("xpath定位错误")
                 else:
+                    print("xpath不存在，该区域商品就一页")
                     continue
             else:
                 break
@@ -108,22 +110,23 @@ for k in country_list:
     print(k,n)
     print("============================================")
 
+# 列表去重
+all_whatsapp = sorted(list(set(phone_data)), key=phone_data.index)
 
 '''
 验证电话号码是否符合标准
 如国内是+86 11位数字组成
 并不能验证该电话号码能否正常使用
 '''
-for real in phone_data:
-    if phonenumbers.is_possible_number(phonenumbers.parse(real, None))==True:
+for real in all_whatsapp:
+    if phonenumbers.is_possible_number(phonenumbers.parse(real, None)):
         pass
     else:
-        phone_data.remove(real)
+        all_whatsapp.remove(real)
 
-# 列表去重
-phone_data = sorted(list(set(phone_data)), key=phone_data.index)
 
+driver.quit()
 end=time.time()
 logging.info("总计耗时%s" %(end-start))
-df = pd.DataFrame(data)
+df = pd.DataFrame({"WhatsApp":all_whatsapp})  # 列表处理后DataFrame还是使用处理之前的，因此这里手动添加
 df.to_excel('./{}.xlsx'.format(key_word))
