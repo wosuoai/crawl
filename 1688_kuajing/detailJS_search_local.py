@@ -6,18 +6,23 @@ import re
 import pandas as pd
 import logging
 import random
+import multiprocessing
+
 
 '''format=%(asctime)s具体时间 %(filename)s文件名 %(lenvelname)s日志等级 %(message)s具体信息
    datemt=%a星期 %d日期 %b月份 %Y年份 %H:%M:%S时间'''
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(filename)s %(levelname)s %(message)s',
-                    datefmt='%a %d %b %Y %H:%M:%S', filename='1688_search_local.log', filemode='w')
+                    datefmt='%a %d %b %Y %H:%M:%S', filename='1688_wap.log', filemode='w')
 
 
 option = webdriver.ChromeOptions()
 #option.add_argument('--headless')
+#option.add_experimental_option("debuggerAddress", "127.0.0.1:9222")  # 通过端口号接管已打开的浏览器
+option.add_argument('--disable-infobars')  # 不显示chrome正受到自动测试软件的控制
 option.add_experimental_option("excludeSwitches", ['enable-automation', 'enable-logging'])
-option.add_argument('--disable-blink-features=AutomationControlled')
+option.add_argument('--disable-blink-features=AutomationControlled')    #去掉webdriver痕迹
 driver=webdriver.Chrome(executable_path=r"C:\Users\Administrator\AppData\Local\Programs\Python\Python38\chromedriver.exe",chrome_options=option)
+driver.maximize_window()
 
 
 # 构建信息列表
@@ -46,19 +51,25 @@ def xpathExists(xpath):
    except:
       return False
 
-searchkey_data = pd.read_excel("C:\\Users\\Administrator\\Desktop\\订单管理总表.xlsx",sheet_name="Sheet4")
+driver.get("https://www.1688.com/")
+driver.delete_all_cookies()
+cookies = []
 
-fistWindows = driver.current_window_handle
-driver.get("https://login.taobao.com/?redirect_url=https%3A%2F%2Flogin.1688.com%2Fmember%2Fjump.htm%3Ftarget%3Dhttps%253A%252F%252Flogin.1688.com%252Fmember%252FmarketSigninJump.htm%253FDone%253Dhttps%25253A%25252F%25252Fwww.1688.com%25252F%25253Ftheme%25253Dfactory&style=tao_custom&from=1688web")
-time.sleep(15)
+for cookie in cookies:
+    if 'expiry' in cookie:
+        del cookie['expiry']  # 删除报错的expiry字段
+    driver.add_cookie(cookie)
+driver.refresh()
+time.sleep(3)
 
 start = time.time()
-for goodName in searchkey_data["关键词"]:
+def get_data(goodName):
     for page in range(1,51):
         driver.get("https://s.1688.com/selloffer/offer_search.htm?keywords={}&spm=a260k.dacugeneral.search.0&beginPage={}#sm-filtbar".format(parse.quote(goodName.encode('gbk')),page))
         time.sleep(random.randint(2,3))
 
-        if xpathExists('//*[@id="app"]/div/div[6]/div[4]/div/div/div[2]/h2')==False:
+        # 页面异常处理
+        if xpathExists('//*[@id="app"]/div/div[6]/div[4]/div/div/div[2]/h2')==False and xpathExists('//*[@id="sm-offer-list"]/div[1]/div/div[2]/a/div')==True:
 
             count=1000
             for i in range(6):
@@ -74,7 +85,7 @@ for goodName in searchkey_data["关键词"]:
             time.sleep(random.randint(3,4))
             driver.find_element(By.ID,'ywg-alibaba-list-btn').click()
             # 一直到变化的div
-            items = driver.find_elements(By.XPATH, "/html/body/div[1]/div/div[6]/div[4]/div/div/ul/div")
+            items = driver.find_elements(By.XPATH, "/html/body/div[1]/div/div[7]/div[4]/div/div/ul/div")
             print("当前页有%s个数据条列"%len(items))
             logging.info("当前页有%s个数据条列"%len(items))
             num=0
@@ -102,6 +113,7 @@ for goodName in searchkey_data["关键词"]:
                             collect = matches[0][1]
                             #print(evaluate, collect)
 
+                        # 只获取符合条件的信息
                         if (int(evaluate) >= 500 and int(collect) >= 500 and goodsurl != ""):
                             goodNameList.append(goodName)
                             titelList.append(titel)
@@ -112,11 +124,9 @@ for goodName in searchkey_data["关键词"]:
 
                         num += 1
                     except Exception as error:
-                        print(error)
                         logging.error("错误是%s" % error)
 
             except Exception as error:
-                print(error)
                 logging.error("错误是%s" % error)
 
             time.sleep(random.randint(2, 3))
@@ -129,10 +139,18 @@ for goodName in searchkey_data["关键词"]:
             logging.info("爬到了%s条商品信息" % num)
 
         else:
-            break
+            continue
 
-    df = pd.DataFrame(data)
+        df = pd.DataFrame(data)
     df.to_excel('./1688有效数据/{}.xlsx'.format(goodName))
+    driver.close()
 
-driver.quit()
+
+if __name__ == '__main__':
+    searchkey_data = pd.read_excel("C:\\Users\\Administrator\\Desktop\\订单管理总表.xlsx", sheet_name="Sheet4")
+    pool = multiprocessing.Pool(processes=5)
+    results = pool.map(get_data, searchkey_data["关键词"])
+    pool.close()
+    pool.join()
+
 logging.info("累计耗时%s" %(time.time()-start))
