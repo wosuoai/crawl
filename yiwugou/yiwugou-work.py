@@ -34,6 +34,11 @@ driver.delete_all_cookies()
 with open(r"E:\义乌购商铺信息\cookies\73333197.txt", mode="r", encoding="utf-8") as f:
     ck = f.read()
 
+"""
+获取到的cookies都是登录后重定向到work.yiwugo.com的
+直接使用，在登录时会重定向到user.yiwugou.com上，导致domain错误
+因此将work.yiwugo.com替换成.yiwugo.com
+"""
 b=json.dumps(ck).replace("work.yiwugo.com",".yiwugo.com")
 #cookies=json.loads(b)
 
