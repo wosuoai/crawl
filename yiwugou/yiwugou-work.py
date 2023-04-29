@@ -175,21 +175,39 @@ for filename in cookies_file:
         'sec-ch-ua-platform': '"Windows"',
     }
 
-    # 限时秒杀页面html
-    response = requests.get('https://work.yiwugo.com/marketing/product_select/1.htm', cookies=cookie_dict, headers=headers).text
-    #print(response)
-    soup= BeautifulSoup(response,"lxml")
-    #处理商品标题
+
     deal_title = ""
-    elements=soup.find_all("a", class_='c36c')
-    print("检测到%s个商品信息"%len(elements))
-    if len(elements)>0:
-        for element in elements:
-            element.getText()
-            print(element.getText())
-            deal_title += element.getText() + "\n"
-        deal_titleList.append(deal_title)
-    else:
+    # 限时秒杀页面html
+    try:
+        response = requests.get('https://work.yiwugo.com/marketing/product_select/1.htm', cookies=cookie_dict,headers=headers).text
+        soup = BeautifulSoup(response, "lxml")
+        # 处理商品标题
+        elements = soup.find_all("a", class_='c36c')
+        print("检测到%s个商品信息" % len(elements))
+        if len(elements) > 0:
+            for element in elements:
+                element.getText()
+                print(element.getText())
+                deal_title += element.getText() + "\n"
+    except:
+        pass
+    finally:
+        if len(elements)==60:
+            try:
+                response = requests.get('https://work.yiwugo.com/marketing/product_select/2.htm', cookies=cookie_dict,headers=headers).text
+                soup = BeautifulSoup(response, "lxml")
+                # 处理商品标题
+                elements = soup.find_all("a", class_='c36c')
+                print("检测到%s个商品信息" % len(elements))
+                if len(elements) > 0:
+                    for element in elements:
+                        element.getText()
+                        print(element.getText())
+                        deal_title += element.getText() + "\n"
+            except:
+                pass
+        else:
+            pass
         deal_titleList.append(deal_title)
 
     #处理商品90天销售金额
@@ -253,7 +271,7 @@ for filename in cookies_file:
     logging.info("当前帐号%s数据处理完成"%filename[:-4])
 
     # 构造ExcelWriter
-    excel_writer = pd.ExcelWriter('./1688有效数据/{}.xlsx'.format(filename[:-4]))
+    excel_writer = pd.ExcelWriter(r'E:\义乌购商铺信息\义乌购店铺(限时秒杀-尾货清仓)\{}.xlsx'.format(filename[:-4]))
     df1 = pd.DataFrame({"店铺id": shopidList,"已上架数量": limit_shelfnumList ,"已下架数量": limit_offnumList ,"已上架商品标题": limit_titelList ,"商品开团时间": start_timeList ,"商品结束时间": end_timeList ,"商品报名时间": regist_timeList,"能上架的商品标题": deal_titleList})
     df2 = pd.DataFrame({"店铺id": shopidList,"已上架数量": clear_shelfnumList ,"已下架数量": clear_offnumList ,"商品标题": clear_titelList ,"商品更新时间": update_timeList ,"商品价格": priceList ,"商品得分": scoreList})
     df1.to_excel(excel_writer,sheet_name = '限时秒杀')
@@ -263,3 +281,34 @@ for filename in cookies_file:
 
 driver.close()
 logging.info("累计耗时%s" %(time.time()-start))
+
+
+input_folder = r'E:\义乌购商铺信息\义乌购店铺(限时秒杀-尾货清仓)'
+output_file = r'E:\义乌购商铺信息\义乌购店铺信息总表.xlsx'
+
+#  获取文件夹下所有的Excel文件
+excel_files = [file for file in os.listdir(input_folder) if file.endswith('.xlsx')]
+
+#  如果存在Excel文件，则整合为一个新的Excel文件
+if excel_files:
+    #  创建DataFrame列表，用于保留所有Excel文件中的数据
+    limit_data_frames = []
+    clear_data_frames = []
+
+    #  遍历Excel文件，并将它们读入DataFrame列表中
+    for file in excel_files:
+        file_path = os.path.join(input_folder, file)
+        limit_data = pd.read_excel(file_path,sheet_name="限时秒杀")
+        clear_data = pd.read_excel(file_path,sheet_name="尾货清仓")
+        limit_data_frames.append(limit_data)
+        clear_data_frames.append(clear_data)
+
+    #  将所有数据合并到一个DataFrame中，并将它写入输出文件中
+    excel_writer = pd.ExcelWriter(output_file)
+    combined_limit = pd.concat(limit_data_frames, axis=0, ignore_index=True)
+    combined_limit.to_excel(excel_writer, sheet_name="限时秒杀")
+    combined_clear = pd.concat(clear_data_frames, axis=0, ignore_index=True)
+    combined_clear.to_excel(excel_writer, sheet_name="尾货清仓")
+    excel_writer.close()
+else:
+    print('未找到文件')
