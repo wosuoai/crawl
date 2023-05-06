@@ -16,7 +16,6 @@ option = webdriver.ChromeOptions()
 #option.add_argument('--headless')
 option.add_experimental_option("excludeSwitches", ['enable-automation', 'enable-logging'])
 option.add_argument('--disable-blink-features=AutomationControlled')
-option.add_argument("--disable-javascript")
 driver=webdriver.Chrome(executable_path=r"C:\Users\Administrator\AppData\Local\Programs\Python\Python38\chromedriver.exe",chrome_options=option)
 driver.maximize_window()
 
@@ -27,11 +26,6 @@ def xpathExists(xpath):
       return True
    except:
       return False
-
-def set_element_value(driver, xpath, value):
-    """ Xpath中使用双引号，则拼接js时要使用单引号包裹双引号，否则会出现missing)after argument list """
-    js = f'var ele = document.evaluate(\'{xpath}\', document).iterateNext(); ele.value = arguments[0];'
-    driver.execute_script(js, value)
 
 driver.get("https://www.yiwugo.com/")
 driver.delete_all_cookies()
@@ -61,7 +55,6 @@ for page in range(int(page_num)):
     driver.get("https://work.yiwugo.com/product_s/productlist/{}.htm?t=1".format(int(page_num)-1))
     time.sleep(0.5)
 
-    # 一直到变化的div
     for i in range(2,21):
         driver.find_element(By.XPATH, "/html/body/div[2]/div[1]/table/tbody/tr[{}]/td[10]/a[1]".format(i)).click()
         time.sleep(2)
@@ -78,16 +71,10 @@ for page in range(int(page_num)):
             select_ele.select_by_value("111997")
             time.sleep(1)
 
-        save=''
         try:
-            save=driver.find_element(By.XPATH,"/html/body/div[2]/div/form/table/tbody/tr[30]/td/input").get_attribute("value")
-            print(save)
+            driver.find_element(By.CSS_SELECTOR,"body > div:nth-child(7) > input").click()
         except:
-            pass
-        if save=="发布商品":
-            driver.find_element(By.XPATH,"/html/body/div[2]/div/form/table/tbody/tr[30]/td/input").click()
-        else:
-            driver.find_element(By.XPATH, "/html/body/div[5]/input").click()
+            driver.find_element(By.CSS_SELECTOR, "body > div:nth-child(3) > div > form > table > tbody > tr.p_b_h > td > input").click()
 
         time.sleep(0.5)
         driver.get("https://work.yiwugo.com/product_s/productlist/{}.htm?t=1".format(int(page_num)-1))
