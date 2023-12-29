@@ -1,5 +1,4 @@
 from selenium import webdriver
-from urllib import parse
 import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -7,9 +6,8 @@ import logging
 import random
 import phonenumbers
 import pandas as pd
-from PIL import Image
 from selenium.webdriver.support import expected_conditions as EC
-from chaojiying import Chaojiying_Client
+
 # import io
 # import sys
 # sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf-8') #改变标准输出的默认编码
