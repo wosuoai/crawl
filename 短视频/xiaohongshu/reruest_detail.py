@@ -55,7 +55,7 @@ def feed(source_note_id):
         'x-s-common': '2UQAPsHC+aIjqArjwjHjNsQhPsHCH0rjNsQhPaHCH0P1PjhIHjIj2eHjwjQgynEDJ74AHjIj2ePjwjQhyoPTqBPT49pjHjIj2ecjwjHUN0P1PaHVHdWMH0ijP/W7G0PA+ec9P9z0GnGFy7kEwBpTP7S04A+S40YA4oz1+/YI+oD9JnhMPeZIPePhP/rMPsHVHdW9H0il+0WU+0WEP/LhP/rhNsQh+UHCHDRdcnHlPDu9/FQ+tMiU4A8y+D8oPn40c7PU+L4y87q9qFHlaArUPLlO8ArAHjIj2eWjwjQQPAYUaBzdq9k6qB4Q4fpA8b878FSet9RQzLlTcSiM8/+n4MYP8F8LagY/P9Ql4FpUzfpS2BcI8nT1GFbC/L88JdbFyrSiafpr8bQhqgb78rS9cg+gcf+i4MmF4B4T+e8NpgkhanWIqAmPa7+xqg412/4rnDS9J7+hGSmx2n+McLSia9prG/4A8fzIJbmM4FFUpd49q9RMqrSe4nMwpAYN2S87LFSe89p3pdzH47b7zrSb/g+QyemS2rl88rShLA+Q4d8Ap7p7LjV72SmCGFEA8BIA8n8c4MzQyg8ApSmFaFRn4obAqgzgaBI68pzga/zQ40zGanSnPURn49qFqgzLa/P3LBRr+fpkqgziag8Sq7Yc4MmQyMz7anSbqnRScnp/+AYGqfhIq98M49+UGfRSPr8BpFlsa9LIngbwagY68n8n4B+QzaRSzobFyBQ8aLMwwpm7agWM8/bl4e+jJ/8S+fhh/rSbzBpQypmTPSpTcLS9pFh3/L4EaLp08Skn4M+Q2rSez9uAq9kC/9LApdzGagYOq9zmP9pD8biRHjIj2eDjw0qA+0G7+AP9+UIj2erIH0iAP0SR',
         'x-t': '1682689158118',
     }
-    with open('./x-s-t.js', 'r', encoding='utf-8') as f:
+    with open('x-s-t.js', 'r', encoding='utf-8') as f:
         js = f.read()
     crt = execjs.compile(js)
     data = '{"source_note_id":"%s"}'%source_note_id
