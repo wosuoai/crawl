@@ -111,10 +111,7 @@ class TmallItemImg:
                 try:
                     if len(self.proxyIpList) <= self.max_workers * 2:
                         time.sleep(5)
-                        # 每日签到
-                        #get_ip = requests.get(url=f"http://proxy.siyetian.com/apis_get.html?token=gHbi1STUlkeOpWT65kaZBTTn1STqFUeNpXR31ERrh3TUlENORVV31kaVBzTE1EN.QM1ETO5MDO5YTM&limit=1&type=0&time=&split=0&split_text=").text.split('\r\n')
-                        # 包月套餐
-                        get_ip = requests.get(url=f"http://proxy.siyetian.com/apis_get.html?token=AesJWLOR1Z45EVJdXTq1EeNRUR35kajhnTR1STqFUeNpXR31ERrh3TUlENORVV31kaVBzTE1EN.QM3cjNzITO5YTM&limit=5&type=0&time=&split=0&split_text=").text.split('\r\n')
+                        get_ip = requests.get(url=f"").text.split('\r\n')
                         if get_ip == '{"code":10019,"info":"�Ѵﵽʹ������","data":[]}':
                             time.sleep(2)
                             continue
@@ -165,7 +162,7 @@ class TmallItemImg:
         while True:
             try:
                 # 使用游标对象执行SQL查询语句
-                results = MysqlDb(host='127.0.0.1', user='root', password='wosuoai8279',database='item_imgs').executeSql('SELECT shop_name, item_name, img_link FROM all_imgs_copy1 WHERE status = 0 order by id asc LIMIT 100')
+                results = MysqlDb(host='127.0.0.1', user='', password='',database='').executeSql('SELECT shop_name, item_name, img_link FROM all_imgs_copy1 WHERE status = 0 order by id asc LIMIT 100')
                 start = time.time()
                 task_list = []
                 for result in results:
@@ -204,7 +201,7 @@ class TmallItemImg:
                     f.write(requests.get(imgUrl, headers=self.Headers, proxies=proxies, timeout=(2, 3)).content)
                     print(dirPath + "图片{}下载成功".format(imgUrl))
                     # 图片下载成功更新status状态
-                    MysqlDb(host='127.0.0.1', user='root', password='wosuoai8279', database='item_imgs').executeCommit("UPDATE all_imgs_copy1 SET status = 1 WHERE img_link = '{}'".format(imgUrl))
+                    MysqlDb(host='127.0.0.1', user='', password='', database='').executeCommit("UPDATE all_imgs_copy1 SET status = 1 WHERE img_link = '{}'".format(imgUrl))
         except Exception as error:
             print("图片下载出现错误%s" % error)
 
