@@ -12,7 +12,7 @@ def register_Id(c=32):
 def register_session():
     url = 'https://edith.xiaohongshu.com/api/sns/web/v1/login/activate'
     headers = {
-        'authority': 'edith.xiaohongshu.com',
+        'authority': 'edith.小红书.com',
         'accept': 'application/json, text/plain, */*',
         'accept-language': 'zh-CN,zh;q=0.9',
         'content-type': 'application/json;charset=UTF-8',
@@ -36,7 +36,7 @@ def register_session():
 
 def feed(source_note_id):
     headers = {
-        'authority': 'edith.xiaohongshu.com',
+        'authority': 'edith.小红书.com',
         'accept': 'application/json, text/plain, */*',
         'accept-language': 'zh-CN,zh;q=0.9',
         'content-type': 'application/json;charset=UTF-8',
