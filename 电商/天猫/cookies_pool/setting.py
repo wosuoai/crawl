@@ -22,13 +22,7 @@ LOGIN_MAP={
 
 # 账号配置类
 ACCOUNT_MAP={
-    "tmall":[
-         {"username":"15224041341","password":"dejavu222"},
-         {"username":"15224041341","password":"dejavu555"},
-         {"username":"19357188234","password":"dejavu777"},
-         {"username":"13175523170","password":"wosuoai8279"}
-        
-        ]
+    "tmall":[]
 }
 
 # 每个cookies的冷却时间

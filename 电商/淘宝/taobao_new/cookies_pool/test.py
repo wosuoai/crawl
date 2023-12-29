@@ -1,17 +1,4 @@
-from cookies_process.cookies_redis import RedisClient
-from setting import *
-# redisClient=RedisClient(type="account",website="taobao",host="127.0.0.1",port=6379,password="")
-# accountList = ACCOUNT_MAP["taobao"]
-# redisClient.deleteHashKey()
-# for account in accountList:
-#     redisClient.set(account["username"],account["password"])
-# redisClient.set("shixiuhai","sxh.200008")
-# redisClient.set("shixiuhai1","sxh.200008")
-# redisClient=RedisClient(type="credential",website="taobao",host="127.0.0.1",port=6379,password="")
-# print(redisClient.all())
-# redisClient.set("shixiuhai","{'a':1,'b':2}")
-# redisClient.set("shixiuhai1","{'a':1,'b':3}")
-# print(redisClient.get("shixiuhai"))
+
 
 # from cookies_process import cookies_test as test
 # testObj=getattr(test,"BaseTest")("taobao")

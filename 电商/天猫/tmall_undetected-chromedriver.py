@@ -29,10 +29,10 @@ script = '''
         '''
 
 conn = pymysql.connect(
-    host="localhost",
-    user="root",
-    password="wosuoai8279",
-    database="item_imgs"
+    host="",
+    user="",
+    password="",
+    database=""
 )
 cursor = conn.cursor()
 
@@ -422,7 +422,7 @@ class TmallItemImg:
 
 
 if __name__ == "__main__":
-    cookiesList = [{'_l_g_': 'Ug%3D%3D', '_m_h5_tk': '5dcf7ef967b126effe207c90ed7e27b4_1698903839282', '_m_h5_tk_enc': '45167ed2ed291cd84bdf7cc8c943eb5b', '_nk_': 'tb307480725849', '_tb_token_': '7b3d75be5606f', 'cancelledSubSites': 'empty', 'cna': 'hS2QHXCurFkCAXPDTAjtBsQO', 'cookie1': 'WvSbIa6wl3AGlpLstYQlbgWvDm8z4axn9U%2FjMCGa9ck%3D', 'cookie17': 'UUpgQEjzHDCO8qJu5A%3D%3D', 'cookie2': '16e8474b8785a637c20834349b47a235', 'csg': 'e709d2ce', 'dnk': 'tb307480725849', 'isg': 'BKqqBF4_uyZMzjdKfPTcqfVD-xBMGy51nUdNNzRjVv2IZ0ohHKt-hfCV85P7l6YN', 'l': 'fBr-xSngPY5axFdbBOfwPurza77OSIRAguPzaNbMi9fP90595xPcW1F0KWLpC3GVF6z6R3RxBjFXBeYBqIvn3r4Aa6Fy_Ckmne_7Qn5..', 'lgc': 'tb307480725849', 'lid': 'tb307480725849', 'login': 'true', 'sg': '97c', 'sgcookie': 'E100TCBjMlJWSolh7k6jU1LK%2Ffc9lxTo450PlFdyj0kCbnywFdMhdQ1%2BNEOq1sHkKrsUc07ATy7ElJg21tk8r6taABETR2YdhUFn1%2BH3mOlPHs8%3D', 't': 'a65d71c81a576d524f8060659afddc52', 'tfstk': 'd3U9UNjw19XieQ8TadIh3okaDnChtPFZJRPWoxDMcJeLU8Lc_l20vjw3Hq00GOyYkvw9olVgGIhbKVi4jxDiHqF4e6XlraVa_qo1ETbuS_NZu5hGee_u_5uqeSyCEaYxLD8AUH9H_6XXzzzm1iXgcWtoSPGtXYLmpELAifntF5MdFT6ZXz4-aUJoejx196K20cGFlBq0O', 'tracknick': 'tb307480725849', 'uc1': 'existShop=false&pas=0&cookie16=UIHiLt3xCS3yM2h4eKHS9lpEOw%3D%3D&cookie15=V32FPkk%2Fw0dUvg%3D%3D&cookie21=URm48syIZx9a&cookie14=Uoe9ZY5azHfHLQ%3D%3D', 'uc3': 'vt3=F8dD3CEDmBB7PQVc0Jk%3D&id2=UUpgQEjzHDCO8qJu5A%3D%3D&nk2=F5RGNs1XxWX0fG0hWno%3D&lg2=WqG3DMC9VAQiUQ%3D%3D', 'uc4': 'id4=0%40U2gqz6fdB8BAmddT2A222ZWAjs10JekK&nk4=0%40FY4NA1sR8gQBPMyWtH%2BMB28r4Voh5c2NzA%3D%3D', 'unb': '2216174043397', 'xlly_s': '1'}]
+    cookiesList = []
 
     # 直接复制店铺链接，注意加上pageNo
     target_shopLink = 'https://onebuye.tmall.com/search.htm?spm=a1z10.1-b-s.w5002-18054582166.1.4f642e43l6AU70&search=y&pageNo=14#anchor'

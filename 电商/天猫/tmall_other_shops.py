@@ -306,7 +306,7 @@ class TmallItemImg:
 
 
 if __name__ == "__main__":
-    cookiesList = [{'tfstk': 'd7J9UuwBE20gfMcfv5hngScdv2mnxdKNpF-7nZbgGeLpzUembCYD9iTHktXDcV8vHwTTnCxMcoIX-O12sZbGktK2yD0oEYxwbt5sr4Dk76KN3hIiyJMkbhW4XrikOY2A7DB5U2Eb872gFL9cfjo0rssURdSO6aecJ-exmGCOPh_KP46awLvR48zlyiVsvDF4g1sEyNiV1', '_m_h5_tk': '6db7bb2063f08b8d1c245e534b62aec2_1694753060395', 'uc1': 'existShop=true&pas=0&cookie14=Uoe9aVdHvJ5qEQ%3D%3D&cookie15=Vq8l%2BKCLz3%2F65A%3D%3D&cookie16=UIHiLt3xCS3yM2h4eKHS9lpEOw%3D%3D&cookie21=U%2BGCWk%2F7p46FZ2E49bW3', 'cancelledSubSites': 'empty', 'uc4': 'nk4=0%40FcEKYMKi8FTUUKLwv4FV6FiCnJ%2Bgo9fP1Q%3D%3D&id4=0%40UgbvDH8R6%2BaCqcdPWfZaNjfkv%2BmU', 'sgcookie': 'E100pKVt73qVdydzzHIAGWxvwhQahX%2BtasGriONKnCYLKNgQ%2FJ3FdjWU7OvHmRDuGNZ1hxGzNiW2m6djNT2tR5YdR6XMsldgiwNU%2FQ406PxWeSE%3D', 'tracknick': 't-3110751053-1', '_nk_': 't-3110751053-1', 'sg': '134', '_tb_token_': 'e33e3e37ebf35', 'csg': 'c0f589bd', 'cookie2': '1bd43de7c082fae5e6f9f021bfe58f5e', 'xlly_s': '1', 'isg': 'BEVFtVmnjMcNYqnahFdUBDAMVIF_AvmU27jTQ0eqAXyL3mVQD1IJZNO87AIonhFM', 'unb': '3110751053', 'uc3': 'id2=UNGXErL6DPTPew%3D%3D&lg2=U%2BGCWk%2F75gdr5Q%3D%3D&vt3=F8dCsGSMMsmqY9bCizM%3D&nk2=F9vlEhVtaAUXKX4c3Mk%3D', 'cookie17': 'UNGXErL6DPTPew%3D%3D', '_l_g_': 'Ug%3D%3D', 't': 'e2a17efc8e2b20df90213c81e2e04ed2', 'lid': 't-3110751053-1', 'login': 'true', 'dnk': 't-3110751053-1', 'l': 'fBIMmS5RNZnWlkebKOfwPurza77OSIRAguPzaNbMi9fPO6C65xeOW1hcR1TBC3GVF6VWR3-WjmOpBeYBqIvTUEGCa6Fy_CkmnmOk-Wf..', 'lgc': 't-3110751053-1', '_m_h5_tk_enc': 'ae3c4e8e233dcf82b1d82d774808af63', 'cookie1': 'Wqajzt427CkD7%2BKUaBPrkLCOKT2Ni0o1cMo4O%2B22aM4%3D', 'cna': 'duFAHTR2tzYCAX158qGMeKOh'}]
+    cookiesList = []
 
     # 直接复制店铺链接，注意加上pageNo
     target_shopLink = 'https://shop201511688.taobao.com//getShopItemList.htm'

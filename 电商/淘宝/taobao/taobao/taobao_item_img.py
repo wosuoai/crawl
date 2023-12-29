@@ -15,7 +15,6 @@ class TaobaoItemImg:
             #'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
             'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7',
             'cache-control': 'max-age=0',
-            # 'cookie': 'thw=cn; cna=AbGRHJxN6koCAW8CWyaOFU9H; t=5c0e77b79ca30999a50febac43117b48; lgc=tb80111606; tracknick=tb80111606; _cc_=VT5L2FSpdA%3D%3D; sgcookie=E100w%2Bvajo%2B06VFgv76h5cODFFyv%2Bsyt1j2kmGOG0X%2BR9qk1aujLoXjzlwvaAI21V6eRs4tVN1rGqG5CR9WixyPmLuxrmpvpnggWGtFIP1Xu4y4zhgbjye5CwPmjupe6CyyC; uc3=id2=UNQyQxMqUdx1nQ%3D%3D&lg2=W5iHLLyFOGW7aA%3D%3D&nk2=F5RNZTse5XZpwA%3D%3D&vt3=F8dCsGO7WCQXYRbBmfQ%3D; uc4=nk4=0%40FY4GsvRHfRNKE%2BdeKAlPibDvG5zy&id4=0%40UgP5GPE5h%2FvopPV87slT5h%2Btp8Ez; mt=ci=-1_0; cookie2=1543732a315fefad0f05b7d93ba61d92; _tb_token_=e93eeeb8177fe; xlly_s=1; _m_h5_tk=87b0be7f3547a1f72d92e1ade99f7d42_1689565190413; _m_h5_tk_enc=eb782c9f0f0a7b0250133ffaaf8d1722; uc1=cookie14=Uoe8g0xRHxRTFg%3D%3D; isg=BNzcaDMS1FsWIaAk3F4rQmZ9rfqOVYB_fCW36rbdo0eqAXyL3mVjD1LwZWn5ibjX; l=fBSck9QeNgpDvjnZBOfZPurza77TxIRAguPzaNbMi9fPObCH5RvNW1_-H7TMCnGVFsBJR3lDK4dwBeYBq_C-nxvt5mhSG5kmne_7Qn5..; tfstk=c53FBO_XveLUnNlJHP4r_Bpa7mZdZbhnZNPbxdre5VKymzZhiHB8sU3a_71NEkf..',
             'referer': 'https://uland.taobao.com/',
             'sec-ch-ua': '"Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"',
             'sec-ch-ua-mobile': '?0',
@@ -199,7 +198,7 @@ class TaobaoItemImg:
     
 if __name__ == "__main__":
     # cookies列表
-    cookiesList=[{'tfstk': 'c0JGBuarIC51WxkvRF6sBYD881MRwKwVrKJBLmlU_JtUF8CcFWPzYRihS4gaG', 'l': 'fBg6RSc4N3uVhbLLBOfaFurza77OSIRYYuPzaNbMi9fPODCB5nkFW1_Qt-86C3GVF67HR38PiVPBBeYBqQAonxv9w8VMULkmndLHR35..', 'uc1': 'cookie16=UIHiLt3xCS3yM2h4eKHS9lpEOw%3D%3D&existShop=false&pas=0&cookie15=Vq8l%2BKCLz3%2F65A%3D%3D&cookie21=UIHiLt3xSalX&cookie14=Uoe9bfwHAH%2BEpQ%3D%3D', '_nk_': 'tb190299083298', '_l_g_': 'Ug%3D%3D', 'cookie1': 'W8rvz2ilfARm%2BgIV2uEja%2BoORUSU4B9RxHi0RpERwZw%3D', 'dnk': 'tb190299083298', 'cancelledSubSites': 'empty', 'sg': '876', 'mt': 'ci=0_1', 'lgc': 'tb190299083298', 'csg': '271e9f51', 'uc3': 'lg2=Vq8l%2BKCLz3%2F65A%3D%3D&vt3=F8dCsGGr9o%2Fg23IFQrM%3D&nk2=F5REN0TzpuIpquvrAXs%3D&id2=UUpgQEj92dq3JiruyQ%3D%3D', 'unb': '2216199918737', 'cookie2': '15b68ff849d63face57fa94ffeb882a2', 'uc4': 'nk4=0%40FY4PZdb%2Bd5L%2B34Qv%2Fa5cvO6Bl7D9eF4PtA%3D%3D&id4=0%40U2gqz6fTwYfR056JIWg0jpNSlLVLwlUm', '_tb_token_': '7e6ebe0e96ee', '_samesite_flag_': 'true', '_cc_': 'V32FPkk%2Fhw%3D%3D', 'cookie17': 'UUpgQEj92dq3JiruyQ%3D%3D', 'xlly_s': '1', 'existShop': 'MTY5MDE3MDA3OQ%3D%3D', '_m_h5_tk_enc': 'bc5b8f5c19a6b77c5a0cea8d2a8d44de', '_m_h5_tk': 'ed5984ee6ae42d8ea3cb68fe371a50b9_1690175899666', 'isg': 'BMTEs6R_fAqoLshCfSEiNOZSlUK23ehHIXRlod5ldQ9SCWXTBu521f-7T6HRCiCf', 'skt': '81eb73ecdaae9294', 'sgcookie': 'E100RmKFRVRQw%2FSujMJyv%2BXsdJ%2F8JPUoW6iA7xEx%2F6TmeNF5ih3RB0%2FHAde%2F6m7vot%2BxmEXQmrg%2BLqS6Ov7wbRD7af%2F5aeZXbKvnRU8nIcLO2js%3D', 'tracknick': 'tb190299083298', 'cna': 'duFAHTR2tzYCAX158qGMeKOh', 'thw': 'cn', 't': 'be650f779bda6984ae19184e3075c83c'}]
+    cookiesList=[]
     
     # 创建一个爬取淘宝详情的
     taobaoItemImg= TaobaoItemImg()

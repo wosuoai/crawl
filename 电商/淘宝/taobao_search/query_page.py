@@ -33,24 +33,7 @@ option.add_argument("--disable-javascript") #屏蔽js
 # option.add_argument("--user-data-dir="+r"C:/Users/Administrator/AppData/Local/Google/Chrome/User Data/")  #调用本地浏览器，需确认本地没有浏览器窗口打开
 # option.add_argument("load-extension=C:/Users/Administrator/AppData/Local/Google/Chrome/User Data/Default/Extensions/nnjjahlikiabnchcpehcpkdeckfgnohf/5.11.7_0")
 driver = webdriver.Chrome(options=option)
-cookiesList = [{
-                   'tfstk': 'dflHfMs2tvyQ-oukq6FB9ZsvfUptRMN720C827EyQlrsJ8rJd02o2cwr9W3Kjb0KC_LQ9LNoqlmFwJhoP_4rz0TQ2e9tR2N7anKAZI3IR7G2DnIE3jx0N7-vDIdxR2NS0CtlWtvn8hf16s5Oqw_T7_5r_Qw3m2WRa_lg-JXI8O7cQt7NO_awyfW5FJz_SoUxNwdG.',
-                   'l': 'fBg6RSc4N3uVhiVzBOfaFurza77OSIRYYuPzaNbMi9fP_Y1B59C1W19MSrL6C3GVF67HR38PiVPBBeYBqQAonxv9w8VMULkmndLHR35..',
-                   'uc1': 'cookie15=URm48syIIVrSKA%3D%3D&cookie16=V32FPkk%2FxXMk5UvIbNtImtMfJQ%3D%3D&existShop=false&cookie21=U%2BGCWk%2F7oPIg&cookie14=Uoe9b6l2BvrXiQ%3D%3D&pas=0',
-                   '_nk_': 'tb82043229', '_l_g_': 'Ug%3D%3D',
-                   'cookie1': 'UoMzgezpddPRRNA%2BCOjq9bWgwscNZZWmPolL71wcS1M%3D', 'dnk': 'tb82043229',
-                   'cancelledSubSites': 'empty', 'sg': '92b', 'mt': 'ci=0_1', 'lgc': 'tb82043229', 'csg': '572b1c04',
-                   'uc3': 'vt3=F8dCsGd%2BGfx1LDRranw%3D&id2=UUpgQEvwuxBfi25wxA%3D%3D&nk2=F5RNZ%2BB4f8h9FA%3D%3D&lg2=U%2BGCWk%2F75gdr5Q%3D%3D',
-                   'unb': '2216225431902', 'cookie2': '2c326e050e664659b49d2d71975da22d',
-                   'uc4': 'id4=0%40U2gqz6QafAOV0MtvTNM1aQ3RgHN9vKjA&nk4=0%40FY4GsEDQgJWFAvgKMhdW03KKzNQL',
-                   '_tb_token_': '55b05b51e58e3', '_samesite_flag_': 'true', '_cc_': 'URm48syIZQ%3D%3D',
-                   'cookie17': 'UUpgQEvwuxBfi25wxA%3D%3D', 'xlly_s': '1', 'existShop': 'MTY5MjA4MjQzMg%3D%3D',
-                   '_m_h5_tk_enc': 'b41950ace76b04c46ffb112dc1602ace',
-                   '_m_h5_tk': '2b5857e8d948ce3aeaeea6f814055fd2_1691750466570',
-                   'isg': 'BJKSSdxEIvbY6l7ofy_M_oR041h0o5Y9Q9KTS1zrv8UwbzNpUDbCTDed2cvTBA7V', 'skt': '1d59b0cc87f1c69d',
-                   'sgcookie': 'E100i0ZCNejMZHhc%2BG4sK8aBKp9azMzB%2Fqxfq9to%2BLD4qHDpdvHRyqVDQFUpQlDaR5pZDAxYDq4dCOKHRTQZp8ZzXbeoxr0pr652logjoc0hiHVtTjdJ%2BmEqMv0wZFILN90Q',
-                   'tracknick': 'tb82043229', 'cna': 'duFAHTR2tzYCAX158qGMeKOh', 'thw': 'cn',
-                   't': 'be650f779bda6984ae19184e3075c83c'}]
+cookiesList = []
 
 
 def dict_cookies_to_browser_taobao(cookies: dict) -> list:

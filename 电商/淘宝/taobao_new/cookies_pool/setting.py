@@ -22,13 +22,7 @@ LOGIN_MAP={
 
 # 账号配置类
 ACCOUNT_MAP={
-    "taobao":[
-         {"username":"19357179344","password":"dejavu111"},
-         {"username":"19357188234","password":"dejavu999"},
-         {"username":"18067948834","password":"dejavu666"},
-         {"username":"18072854747","password":"dejavu888"}
-        
-        ]
+    "taobao":[]
 }
 
 # 每个cookies的冷却时间

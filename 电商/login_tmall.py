@@ -43,7 +43,7 @@ time.sleep(5)
 name_input_element = driver.find_element(By.ID,'fm-login-id')
 time.sleep(1)
 name_input_element.clear()
-account = "13175523170"
+account = ""
 for s in account:
     name_input_element.send_keys(s)
     time.sleep(random.randint(1, 4) * 0.1)
@@ -52,7 +52,7 @@ time.sleep(2)
 password_input_element = driver.find_element(By.ID,'fm-login-password')
 time.sleep(1)
 password_input_element.clear()
-password = "dejavu8279"
+password = ""
 for s in password:
     password_input_element.send_keys(s)
     time.sleep(random.randint(1, 4) * 0.1)

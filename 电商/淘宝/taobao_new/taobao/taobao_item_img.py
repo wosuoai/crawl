@@ -16,7 +16,6 @@ class TaobaoItemImg:
             #'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
             'accept-language': 'zh-CN,zh;q=0.9',
             'cache-control': 'max-age=0',
-            # 'cookie': 'thw=cn; _uetvid=17f9e27029e711eeb5600b32a025baed; _ga=GA1.2.1168878322.1690178300; _ga_YFVFB9JLVB=GS1.1.1690537650.3.1.1690537823.0.0.0; _ga_JBTWV3NHSY=GS1.1.1690537650.3.1.1690537823.56.0.0; miid=129979361131112765; cna=h0tXHbWjLXACASQYc3J+yrmz; lgc=t-3110751053-1; tracknick=t-3110751053-1; sgcookie=E100T%2BBhrfFpR5PWh%2FAynyHTIB4b1z0M5t5FBGXkhMzgX%2FZqTaMTY1JPTlVxccR5hBxG1MVLtXEqWNy05kWtaKFhJ9rWlrWkNe%2FMXk5jZf0pbkM%3D; uc3=id2=UNGXErL6DPTPew%3D%3D&nk2=F9vlEhVtaAUXKX4c3Mk%3D&vt3=F8dCsGZMnqqhKKeyhQU%3D&lg2=VFC%2FuZ9ayeYq2g%3D%3D; uc4=id4=0%40UgbvDH8R6%2BaCqcdPWfZcUffHXK4Q&nk4=0%40FcEKYMKi8FTUUKLwv4FV6FiCmtaIumyj5Q%3D%3D; _cc_=URm48syIZQ%3D%3D; mt=ci=-1_0; lLtC1_=1; _samesite_flag_=true; cookie2=1bed9df7aac5c15c1812a7378427c11c; t=c2c73e06766f7836a8138c3ce2f0134c; _tb_token_=fe7e1593516b8; _m_h5_tk=3d721adf74a266560abe25ab43b491c5_1692852732277; _m_h5_tk_enc=d5aa7f2443f8b7e99a768941c02d3682; xlly_s=1; v=0; uc1=cookie14=Uoe9b6GjxMe6Bw%3D%3D; tfstk=dAhvEPfSt3x0aRet1rpkQ_3mK98k-j3qymuCslqcC0n-m2M0nVZg6cntXo260Sct2m0In-0ssPGTgbDcsox46Vi36HxHtB0qu-P6xH4IkquVceXlPBAnuq70le0WthSAY5WrHKSOBFCmif4XQ5FtuJxiZreYX1qR618gk-EnluKBAOr-tXUFTMqLStTJyOWahz-LcFyf.; l=fBTeheEqNfLFpLgoKOfwPurza77OSIRAguPzaNbMi9fPO6f95GeGW1trc6TpC3GVF6r2R3-WjmOpBeYBqn4wsWRKe5DDwQHmnmOk-Wf..; isg=BJKSTy2YIss_F16ZQFhuqxmY41h0o5Y9UKmEylzrvcUwbzJpRDAZT76N28vTHw7V',
             'sec-ch-ua': '"Chromium";v="116", "Not)A;Brand";v="24", "Google Chrome";v="116"',
             'sec-ch-ua-mobile': '?0',
             'sec-ch-ua-platform': '"Windows"',
@@ -37,7 +36,7 @@ class TaobaoItemImg:
         :return:
         """
         if self.enableIpProxy:
-            res=requests.get(url="http://api.haiwaidaili.net/abroad?num=1&format=1&protocol=http&country=&state=&city=&sep=1&csep=&type=datacenter").text.strip()
+            res=requests.get(url="").text.strip()
             return {
                     "http": "http://{}".format(res),
                     "https": "http://{}".format(res)
@@ -61,7 +60,6 @@ class TaobaoItemImg:
     def write_imgList_to_dir(self,dirPath:str,imgList:list):
         headers = {
             'authority': 'img.alicdn.com',
-            #'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
             'accept-language': 'zh-CN,zh;q=0.9',
             'cache-control': 'max-age=0',
             'if-modified-since': 'Fri, 11 Aug 2023 10:05:11 GMT',
@@ -237,7 +235,7 @@ class TaobaoItemImg:
 
 if __name__ == "__main__":
     # cookies列表
-    cookiesList=[{'tfstk': 'd5bMfnbCvG-_i1f0nVL_W6kwLFrd1ATXHt3vHEp4YpJC6nJYftxcH9tVWFCOKZfOAqF6WoTcnpXZkhQcGqAVgtN6H5Zd11TXu8e8ezC11vVze8HN4a2klEy8ezUR11TfUyRxKtqC_J0E-47kpPsWqquV8rtME1oxuq7Hshm1_OltY0PpBqOUMwojchRBtLdRlfUh.', 'l': 'fBElX6hPT7nkkGvtBOfaFurza77OSIRYYuPzaNbMi9fP_55B5LcGW1_M1Y86C3GVF67HR38PiVPBBeYBqQAonxv9w8VMULkmndLHR35..', 'uc1': 'existShop=false&cookie21=U%2BGCWk%2F7p4mBoUyS4E9C&cookie15=V32FPkk%2Fw0dUvg%3D%3D&cookie14=Uoe9bf25cmVoxw%3D%3D&cookie16=WqG3DMC9UpAPBHGz5QBErFxlCA%3D%3D&pas=0', '_nk_': 'tb80111606', '_cc_': 'V32FPkk%2Fhw%3D%3D', 'existShop': 'MTY5MDAwNjE2OQ%3D%3D', 'isg': 'BCwse5kEZETw4ncpB9eT2fI8_Qpe5dCPWfz9eYZtOVd6kc2brPHEHo0zt1kpAgjn', 'skt': '87bfd5d6920bb331', 'cookie1': 'U%2BGWz3AsFiX%2BQb4KVw17j51DAUP9jxfiN9Dd%2FomAUJ8%3D', '_ga': 'GA1.2.208439145.1689592688', 'dnk': 'tb80111606', 'cancelledSubSites': 'empty', 'csg': '64006a67', 'uc3': 'lg2=U%2BGCWk%2F75gdr5Q%3D%3D&vt3=F8dCsGGp77F2o5L8jF0%3D&nk2=F5RNZTse5XZpwA%3D%3D&id2=UNQyQxMqUdx1nQ%3D%3D', 'unb': '3451510054', '_ga_YFVFB9JLVB': 'GS1.1.1689592688.1.1.1689592747.0.0.0', '_tb_token_': 'e8eb98ef6e3be', '_samesite_flag_': 'true', 'cookie17': 'UNQyQxMqUdx1nQ%3D%3D', 'xlly_s': '1', 'sg': '641', 'lgc': 'tb80111606', 'mt': 'ci=-1_0', '_l_g_': 'Ug%3D%3D', '_uetvid': '9da4f4d0249311eea044195e64d33b67', 'tracknick': 'tb80111606', 'thw': 'cn', 'cna': 'su2QHDAXHR4BASQJiijj0y+z', '_ga_JBTWV3NHSY': 'GS1.1.1689592698.1.1.1689592747.11.0.0', 't': '4e400d43fbdf02c4e5bb6812c6d18547', '_m_h5_tk_enc': 'c35624f3137e0bbee7898455c3c4950d', '_m_h5_tk': '51e5b8f7bf80a6db4d02dc26eac8e846_1690010482339', 'sgcookie': 'E100Kh2ecfBhEfYAZCBNf24clCvW0bVFNlQeWYa0%2FwMHFlebBtGZxb265UH3tOXai5vi9fOPbD%2Fnm2z4Zr5akc13bVdkM0dNqX7KrGrPjFvpxuKRfRwMLpTHzwYupZSQk27u', 'uc4': 'id4=0%40UgP5GPE5h%2FvopPV87sjzI3bYxkOy&nk4=0%40FY4GsvRHfRNKE%2BdeKAjFMdIApg%2BY', 'cookie2': '1991423172f6454bb50ae5e35f19b4db'}]
+    cookiesList=[]
 
     # 创建一个爬取淘宝详情的
     taobaoItemImg= TaobaoItemImg()

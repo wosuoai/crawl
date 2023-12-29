@@ -521,25 +521,7 @@ class TmallItemImg:
 
 
 if __name__ == "__main__":
-    cookiesList = [{
-                       'tfstk': 'drWWUM0A7407CV5JTDZV1KD2bMvCNawaNDtdjMHrvLpJAvsGRgJFveWBdZbv9TJP4ZwCjNOy998Fd0Xf5vkzr7jKdpJL7PyaQgmyKpUw5YwNqJIUJqUaQRSuw3vFDPrkOE0lU9GT_bGCxrMm3AmNHDp8pAM1h3UHWgTXmnXXVQT9ME6w8A81NrGIcCDBcFrbcXc3pHt3h',
-                       '_m_h5_tk': '352bc8d6f52c7209ebaf10c337cf94f0_1695703181521',
-                       'uc1': 'cookie21=UIHiLt3xSalX&cookie16=VT5L2FSpNgq6fDudInPRgavC%2BQ%3D%3D&pas=0&cookie14=Uoe9aOACdd9hVA%3D%3D&existShop=false&cookie15=UtASsssmOIJ0bQ%3D%3D',
-                       'cancelledSubSites': 'empty',
-                       'uc4': 'id4=0%40U2gqz6fTwYfR056JIWg0jpNXWTxpukIv&nk4=0%40FY4PZdb%2Bd5L%2B34Qv%2Fa5cvO6BkizqeBLeTg%3D%3D',
-                       'sgcookie': 'E100til1UZAN6hGNxlciR6PARCR%2F65Ru%2B%2FpXIIWuy1RKARGhzzQQeQasr4iGBtGuDL02Qo%2FKc6pNmrzS1XDkg4jCRxXtivUoM3PVKsvDaWLronI%3D',
-                       'tracknick': 'tb190299083298', '_nk_': 'tb190299083298', 'sg': '876',
-                       '_tb_token_': 'e5567b7737337', 'csg': '15ca02d1', 'cookie2': '1bc12d3845c423f6c3bf949695d52a8a',
-                       'xlly_s': '1', 'isg': 'BLW1ZRsEPGbgkVkKlIfE9CA8xDFvMmlEq-hDMzfacSx7DtUA_4J5FMOMXNI4ToH8',
-                       'unb': '2216199918737',
-                       'uc3': 'id2=UUpgQEj92dq3JiruyQ%3D%3D&lg2=VT5L2FSpMGV7TQ%3D%3D&nk2=F5REN0TzpuIpquvrAXs%3D&vt3=F8dCsGusnI74Hpa4o9k%3D',
-                       'cookie17': 'UUpgQEj92dq3JiruyQ%3D%3D', '_l_g_': 'Ug%3D%3D',
-                       't': 'e2a17efc8e2b20df90213c81e2e04ed2', 'lid': 'tb190299083298', 'login': 'true',
-                       'dnk': 'tb190299083298',
-                       'l': 'fBIMmS5RNZnWllCtKOfwPurza77OSIRAguPzaNbMi9fPO3f65Zz1W1H4h18BC3GVF6VWR3-WjmOpBeYBqIvTUEGCa6Fy_CkmnmOk-Wf..',
-                       'lgc': 'tb190299083298', '_m_h5_tk_enc': '3b9052bb823bfdb963bf15a244654dd6',
-                       'cookie1': 'W8rvz2ilfARm%2BgIV2uEja%2BoORUSU4B9RxHi0RpERwZw%3D',
-                       'cna': 'duFAHTR2tzYCAX158qGMeKOh'}]
+    cookiesList = []
 
     # 直接复制店铺链接，注意加上pageNo
     target_shopLink = 'https://yuanshui.tmall.com/search.htm?spm=a1z10.1-b-s.w5002-15747945559.1.730063fdlytJw1&search=y&pageNo=1#anchor'
