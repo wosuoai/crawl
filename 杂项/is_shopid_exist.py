@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 def get_items():
     # 连接数据库
-    conn = pymysql.connect(host='localhost', port=3306, user='root', password='wosuoai8279', database='taobao_tmall')
+    conn = pymysql.connect(host='localhost', port=3306, user='', password='', database='')
     cursor = conn.cursor()
 
     # 查询所有数据并存入shop_list列表中
